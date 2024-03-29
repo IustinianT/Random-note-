@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block title %}
+    List of all users
+{% endblock %}
+
+{% block content %}
+<h1>Members</h1>
+<ul>
+    {% for user in users %}
+    <li><a href='user_details/{{ user.id }}'>{{ user.firstname }} {{ user.lastname }}</a></li>
+    {% endfor %}
+    <p>Back to <a href="/notes">notes</a></p> 
+</ul>
+{% endblock %}
