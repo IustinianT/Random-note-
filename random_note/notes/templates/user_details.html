@@ -1,11 +1,14 @@
 {% extends "main.html" %}
 
 {% block title %}
-{{ user.firstname }} {{ user.lastname }}
+    {{ user.firstname }} {{ user.lastname }}
+{% endblock %}
+
+{% block card-header %}
+    {{ user.firstname }} {{ user.lastname }}
 {% endblock %}
 
 {% block content %}
-<h1 style="text-align: center;">{{ user.firstname }} {{ user.lastname }}</h1>
-<p>This is a page for this specific user with id {{ user.id }}!</p>
+    <p>This is a page for this specific user with id {{ user.id }}!</p>
     <p>Back to <a href="/users">users</a></p>
 {% endblock %}

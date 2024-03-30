@@ -4,8 +4,11 @@
     List of all users
 {% endblock %}
 
+{% block card-header %}
+    Users
+{% endblock %}
+
 {% block content %}
-<h1>Members</h1>
 <ul>
     {% for user in users %}
     <li><a href='user_details/{{ user.id }}'>{{ user.firstname }} {{ user.lastname }}</a></li>

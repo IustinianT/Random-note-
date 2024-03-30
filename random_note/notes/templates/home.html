@@ -1,41 +1,27 @@
-<html>
-    <head>
-        <title>Home</title>
-        <script>
-            var interval_ms = 1000;
-            function randomNote() {
-                note_element = document.getElementById("note_generated");
-                note_check = document.getElementById("note_check");
-                notes = ["A", "B", "C", "D", "E", "F", "G"];
-                if (note_check.checked) {
-                    note = notes[Math.floor(Math.random()*notes.length)];
-                    note_element.innerText = note;
-                    console.log(note);
-                    console.log(interval_ms/1000);
-                }
-                setTimeout(randomNote, interval_ms);
-            }
-            setTimeout(randomNote, interval_ms);
+{% extends "main.html" %}
+{% load static %}
 
-            function lower_delay() {
-                decrement = document.getElementById("increment_amount").value;
-                interval_ms -= decrement*1000;
-            }
+{% block javascript-link %}
+    <script src="{% static 'javascript/generate_note.js' %}"></script>
+{% endblock %}
+    
+{% block stylesheet-link %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
-            function increase_delay() {
-                increment = document.getElementById("increment_amount").value;
-                interval_ms += increment*1000;
-            }
-        </script>
-    </head>
-    <body>
-        <h1>Home!</h1>
-        <p>Welcome to the home page of random notes!</p>
-        <a href="/notes">Notes</a>
-        <input id="increment_amount" type="number" value="1">
-        <button id="lower_delay" onclick="lower_delay()"><</button>
-        <button id="increase_delay" onclick="increase_delay()">></button>
-        <input id="note_check" type="checkbox">
-        <h1 style="text-align: center;" id="note_generated"></h1>
-    </body>
-</html>
+{% block title %}
+    Home
+{% endblock %}
+
+{% block card-header %}
+    Welcome to the home page of random notes!
+{% endblock %}
+{% block content %}
+    <a href="/notes">Notes</a>
+    <input id="current_delay" type="number" value="1">
+    <button class="btn" id="confirm_delay" onclick="set_delay()">Confirm</button>
+    <input class="checkbox" id="note_check" type="checkbox">
+    <p id="current_delay_text"></p>
+    <hr>
+    <h1 id="note_generated"></h1>
+{% endblock %}

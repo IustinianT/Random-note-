@@ -1,0 +1,10 @@
+.btn {
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: var(--background-dark);
+    color: white;
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
+}
